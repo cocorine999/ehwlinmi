@@ -1,0 +1,26 @@
+#SET sql_mode = '';
+#SET GLOBAL sql_mode = '';
+
+UPDATE `users` SET `password` = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+
+UPDATE `statut_souscriptions` SET `label` = 'Attente de validation' WHERE `statut_souscriptions`.`id` = 3;
+INSERT INTO `statut_souscriptions` (`id`, `label`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Valide', NULL, NULL, NULL);
+UPDATE `souscriptions` SET `date_effet` = '2020-03-05' WHERE `souscriptions`.`id` = 1010;
+ALTER TABLE `souscriptions` CHANGE `statut` `statut` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Attente de paiement';
+UPDATE `souscriptions` SET `statut` = 'Attente de validation' WHERE `souscriptions`.`statut` = 'Valide';
+SELECT * FROM `souscriptions` WHERE contrat_id = 941;
+
+num marchand
+63054320  CADJA MEHINTO Clarisse
+
+
+ADETONAH Ubald	97000000	ryann.buckridge@example.org	Direction
+ADETONAH Baldyne	97000001		Direction_C
+INOMBILOU Abiguelle	97000002	abiguelle83@gmail.com	Direction_ARH
+ADELEYE Clarisse	97000003	adeleyeclarisse95@gmail.com	Direction_FC
+CADJA Clarisse Edwige	97000004		Direction_MAC
+ASSAN Branly	97000005	stark.elinor@example.net	ITMMS
+KEARA TORPHY Mollie Yundt	66830645	ruby.schultz@example.net	ITMMS
+GOUDALO Jospy	67929211	jospygoudalo@gmail.com	ITMMS
+ADETONAH Baldyne	99887689		Direction_FC
+COOVI Irénée	95056611	avseconsulting@yahoo.fr	Direction_FC

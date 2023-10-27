@@ -1,0 +1,89 @@
+//Test1
+
+New client
+New assure
+New beneficiaire
+
+//Test2
+
+New client
+Assure is souscripteur
+New beneficiaire
+
+//Test3
+
+New client
+New assure
+Beneficiaire is souscripteur
+
+//Test4
+
+New client
+Old assure
+New beneficiaire
+
+//Test5
+
+New client
+Old assure
+New beneficiaire
+
+//Test6
+
+New client
+Old Assure
+Old Beneficiaire
+
+//Test7
+
+New client
+New assure
+Old beneficiaire
+
+//Test6
+
+Old client
+New assure
+New beneficiaire
+
+//Test7
+
+Old client
+New assure
+New beneficiaire
+
+//Test8
+
+Old client
+Old assure
+New beneficiaire
+
+//Test9
+
+Old client
+Old assure
+Old beneficiaire
+
+//Test10
+
+Old client
+Assure is client
+Old beneficiaire
+
+//Test11
+
+Old client
+Assure is client
+New beneficiaire
+
+//Test12
+
+Old client
+New assure
+Old beneficiaire
+
+//Test13
+
+Old client
+New assure
+Beneficiaire is client
