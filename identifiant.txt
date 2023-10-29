@@ -1,9 +1,21 @@
-marchand 	: 97000008 // secret
+marchand 	: 97000008 // secret // NSIA
 marchand 	: 63054308 // secret // reference : 46L7, id : 7 // supermarchand : // reference : 46L, id : 46L // user : // id : 60
 		  64112282 // secret // reference : 9L109, id : 109 // supermarchand : // reference : 46L, id : 46L // user : // id : 60
 		  63054320 // secret // reference : 46L6, id : 6 // supermarchand : // reference : 46L, id : 46L // user : // id : 60
 		  99999122 // secret
+
+marchand :
+		   56 | HOUNKONNOU | LUCRECE | COTONOU | 62945095 // marchand profile details reference : 2A2 | id: 2 // supermarchand : 2
 		  
+		   60 | Afolabi | Jean   | Akpakpa / Ciné Concorde  | 369852 // marchand profile details reference : 46L3 | id: 3 // supermarchand : 46
+		  
+
+super_marchand :
+		   12 | ASSAN | Branly | CALAVI ZOGBADJE | 95071520 // super_marchand profile details reference : 2A | id: 2 // direction : 1
+		  
+		   59 | DOE | John   | Akpakpa | 07896545 // super_marchand profile details reference : 46L | id: 46 // direction : 1
+		  
+
 souscripteur 	: 90080791 // secret
 		: 51454695 // secret
 		: 97418669 // secret
@@ -11,9 +23,23 @@ souscripteur 	: 90080791 // secret
 		: 51454694 // secret
 		: 97513483 // secret
 
+		57 | SOUSOUDJI | KADNEL | Cotonou | 97967833 // client id: 1 // contrats reference: 2A2N1756
+		61 | ADEBIYI   | Jeanne | Tokpa   | 99151256 // client id: 2 // contrats reference: 46L3N1255
+		64 | Dujardin  | Jean   | SD      | 96254399 // client id: 3 // contrats reference: 46L3N2684
+
 supermarchand 	: 96199039 // secret
 		: 95493164 // secret
-		
+		  95071520 // BRANLY
 		
 direction 	: 97000005 // secret
 		: 98555477 // secret
+		1 | Mr. Keon Cole | Alize Larkin | Dr. Lucio D'Amore Sr. | 97000000
+		7 | Prof. Milan Spencer V | Prof. Alanis Kemmer III | Mr. Hal Bayer V | 97000006
+
+contrats: 
+| id | reference | client_id | assure_id | q1 | q2 | q3 | q4 | q5 | deleted_at | created_at          | updated_at          |
++----+-----------+-----------+-----------+----+----+----+----+----+------------+---------------------+---------------------+
+|  1 | 2A2N1756  |         1 |         1 |  0 |  0 |  0 |  0 |  1 | NULL       | 2020-03-05 11:37:28 | 2020-03-05 11:37:28 |
+|  2 | 46L3N1255 |         2 |         2 |  0 |  0 |  0 |  0 |  1 | NULL       | 2020-03-07 17:45:08 | 2020-03-07 17:45:08 |
+|  3 | 46L3N2684 |         3 |         3 |  0 |  0 |  0 |  0 |  1 | NULL       | 2020-03-07 17:56:10 | 2020-03-07 17:56:10 |
++----+-----------+-----------+-----------+----+----+----+----+----+------------+---------------------+---------------------+

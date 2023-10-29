@@ -42,7 +42,7 @@
             <b>Date d'effet </b> <span class="float-right  text-success">{{$contrat->dateEffet}}</span>
           </li>
           <li class="list-group-item">
-            <b>Date d'échéance</b> <span class="float-right  text-danger">{{$contrat->dateEffet->addYears(1)}}</span>
+            <b>Date d'échéance</b> <span class="float-right  text-danger">{{ $contrat->dateEffet ? \Carbon\Carbon::parse($contrat->dateEffet)->addYear()->format('Y-m-d') : "" }}</span>
           </li>
           @endif
           <li class="list-group-item">

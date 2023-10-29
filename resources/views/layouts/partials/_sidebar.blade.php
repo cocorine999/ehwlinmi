@@ -312,7 +312,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('tickets.index')}}">
               <i class="nav-icon far fa-circle text-info"></i>
-              <p>Tickets <small class="badge badge-primary">{{ App\Models\TicketStatus::where('name', "Ouvert")->first()->tickets->count()}} ouverts</small></p>
+              <p>Tickets <small class="badge badge-primary">{{ optional(optional(App\Models\TicketStatus::where('name', "Ouvert")->first())->tickets)->count()}} ouverts</small></p>
             </a>
           </li>
           @endhasanyrole
