@@ -1,0 +1,97 @@
+version: "2.4"
+
+services:
+  nginx:
+    image: ehwlinmi-app
+    container_name: ehwlinmi-nginx
+    entrypoint: ["nginx"]
+    command: ["-g", "daemon off;"]
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  app:
+    build: .
+    image: ehwlinmi-app
+    container_name: ehwlinmi-app
+    env_file: .env
+    volumes:
+      - ./.env:/var/www/html/.env:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  horizon:
+    image: ehwlinmi-app
+    container_name: ehwlinmi-horizon
+    command: ["php", "artisan", "horizon"]
+    env_file: .env
+    volumes:
+      - ./.env:/var/www/html/.env:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      app:
+        condition: service_started
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: ehwlinmi-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ehwlinmi_redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: ehwlinmi-db
+    environment:
+      MYSQL_DATABASE: ehwlinmi
+      MYSQL_USER: ehwlinmi
+      MYSQL_PASSWORD: ehwlinmi_secret
+      MYSQL_ROOT_PASSWORD: root_ehwlinmi_secret
+      TZ: Africa/Porto-Novo
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./ehwlinmi.sql:/docker-entrypoint-initdb.d/01-ehwlinmi.sql:ro
+      - ehwlinmi_dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot_ehwlinmi_secret", "--silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    container_name: ehwlinmi-phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 100M
+      TZ: Africa/Porto-Novo
+    ports:
+      - "8082:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ehwlinmi_dbdata:
+  ehwlinmi_redis:
